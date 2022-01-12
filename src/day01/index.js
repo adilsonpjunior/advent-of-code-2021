@@ -10,7 +10,7 @@ function countIncrease(array) {
     increased += array[i] > array[i - 1] ? 1 : 0;
   }
 
-  return increased
+  return increased;
 }
 
 console.log("Parte 1");
@@ -19,13 +19,11 @@ console.log(countIncrease(input));
 
 console.log("Parte 2");
 
-let measurementsPoints = []
+let measurementsPoints = [];
 
-for (let i = 0; i < (input.length - 2); i++) {
+for (let i = 0; i < input.length - 2; i++) {
+  let soma = input[i] + input[i + 1] + input[i + 2];
+  measurementsPoints.push(soma);
+}
 
-  let soma = input[i] + input[i + 1] + input[i + 2]
-  measurementsPoints.push(soma)
-  }
-
-  console.log(countIncrease(measurementsPoints));
-
+console.log(countIncrease(measurementsPoints));
