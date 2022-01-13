@@ -78,10 +78,7 @@ function getOxygenGenerator(inputF, binaryLengthF) {
     lastOxygenGenerator = oxygenGenerator;
     binaryOccurF = determineBinaryOccur(oxygenGenerator, binaryLengthF);
 
-    if (oxygenGenerator.length == 1) {
-      // Interrompe processamento quando encontrar ultimo valor
-      break;
-    }
+    if (oxygenGenerator.length == 1) break; // Interrompe processamento quando encontrar ultimo valor
   }
 
   return oxygenGenerator[0];
@@ -113,10 +110,7 @@ function getCo2Scrubber(inputF, binaryLengthF) {
     lastCo2Scrubber = Co2Scrubber;
     binaryOccurF = determineBinaryOccur(Co2Scrubber, binaryLengthF);
 
-    if (Co2Scrubber.length == 1) {
-      // Interrompe processamento quando encontrar ultimo valor
-      break;
-    }
+    if (Co2Scrubber.length == 1) break; // Interrompe processamento quando encontrar ultimo valor
   }
 
   return Co2Scrubber[0];
