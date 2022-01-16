@@ -9,6 +9,7 @@
     "day01": "node ./src/day01",
     "day02": "node ./src/day02",
     "day03": "node ./src/day03",
+    "day04": "node ./src/day04",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
