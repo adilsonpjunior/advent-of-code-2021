@@ -1,6 +1,6 @@
 import { readInputNumeric, readInputString } from "../util.js";
 
-const input = readInputString(process.cwd() + "/src/day04/input.txt");
+const input = readInputString(process.cwd() + "/src/day04/input_test.txt");
 
 const numbersDraw = input[0].split(",");
 
@@ -57,6 +57,8 @@ function findWinner(setBoards, numbersDraw) {
                 CheckWin.push(setBoards[i][l][coluna]);
               }
               CheckWin = CheckWin.filter((win) => win != "X");
+              if (CheckWin.length == 0)
+                calculo = calculaVencedor(setBoards[i], Number);
             }
           }
         }
@@ -89,5 +91,55 @@ console.log("== Parte 1 ==");
 let setBoards = GenerateBoards(boards);
 
 let calculo = findWinner(setBoards, numbersDraw);
+
+console.log(calculo);
+
+console.log("== Parte 2 ==");
+
+function findLastWinner(setBoards, numbersDraw) {
+  let calculo = 0;
+
+  numbersDraw.forEach((Number) => {
+    if (calculo != 0 && setBoards.length == 1) return;
+
+    //for (let i = 0; i < setBoards.length; i++) {
+    //if (calculo != 0) return;
+    for (const key in setBoards) {
+      for (let linha = 0; linha < 5; linha++) {
+        //if (calculo != 0) return;
+        for (let coluna = 0; coluna < 5; coluna++) {
+          if (setBoards[key][linha][coluna] != Number) continue;
+
+          setBoards[key][linha][coluna] = "X";
+          // Após Marcar, Verifica se a linha ganhou
+          let CheckWin = setBoards[key][linha].filter((win) => win != "X");
+          if (CheckWin.length == 0)
+            calculo = calculaVencedor(setBoards[key], Number);
+          else {
+            // Se a linha nao ganhou, Verifica se a coluna ganhou
+            CheckWin = [];
+            for (let l = 0; l < 5; l++) {
+              CheckWin.push(setBoards[key][l][coluna]);
+            }
+            CheckWin = CheckWin.filter((win) => win != "X");
+            if (CheckWin.length == 0)
+              calculo = calculaVencedor(setBoards[key], Number);
+          }
+        }
+        if (calculo != 0 && setBoards.length > 1) {
+          setBoards.splice(key, 1);
+          calculo = 0;
+          break;
+        }
+      }
+    }
+  });
+
+  return calculo;
+}
+
+setBoards = GenerateBoards(boards);
+
+calculo = findLastWinner(setBoards, numbersDraw);
 
 console.log(calculo);
