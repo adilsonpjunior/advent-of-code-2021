@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "https://adventofcode.com/2021",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "typescript": "^4.6.3"
+  },
   "devDependencies": {},
   "scripts": {
     "day01": "node ./src/day01",
@@ -24,5 +26,4 @@
   },
   "homepage": "https://github.com/adilsonpjunior/advent-of-code-2021#readme",
   "type": "module"
-  
 }
